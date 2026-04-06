@@ -6,61 +6,48 @@
     <title>ALBUM RELEASE</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        /* ПРИНУДИТЕЛЬНЫЙ CAPS LOCK ДЛЯ ВСЕГО */
-        * {
-            text-transform: uppercase !important;
-            box-sizing: border-box;
-        }
+        /* ПРИНУДИТЕЛЬНЫЙ CAPS ДЛЯ ВСЕГО */
+        * { text-transform: uppercase !important; box-sizing: border-box; }
 
         body, html { 
             margin: 0; padding: 0; height: 100%; width: 100%; 
             background: #050505; 
             font-family: 'Press Start 2P', 'Courier New', Courier, monospace;
-            color: #fff; 
-            overflow: hidden; 
+            color: #fff; overflow: hidden; 
         }
 
         /* ЗВЕЗДЫ */
         .stars, .stars2, .stars3 { position: fixed; top: 0; left: 0; background: transparent; animation: twinkle 4s infinite ease-in-out; z-index: 0; }
         @keyframes twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
-        .stars { width: 1px; height: 1px; box-shadow: 10vw 10vh #fff, 25vw 30vh #ffb6c1, 50vw 5vh #fff, 75vw 40vh #ff69b4, 90vw 15vh #fff, 5vw 80vh #ff1493, 40vw 90vh #fff, 65vw 60vh #ffb6c1, 15vw 55vh #fff, 80vw 85vh #ff69b4; }
-        .stars2 { width: 2px; height: 2px; box-shadow: 20vw 20vh #fff, 45vw 45vh #ffb6c1, 70vw 10vh #fff, 15vw 75vh #ff69b4, 85vw 60vh #fff, 35vw 85vh #ff1493, 60vw 30vh #fff, 95vw 90vh #ffb6c1; animation-delay: 1s; }
-        .stars3 { width: 3px; height: 3px; box-shadow: 55vw 20vh #fff, 10vw 40vh #ffb6c1, 80vw 25vh #fff, 30vw 65vh #ff69b4, 50vw 80vh #fff; animation-delay: 2s; }
+        .stars { width: 1px; height: 1px; box-shadow: 10vw 10vh #fff, 25vw 30vh #ffb6c1, 50vw 5vh #fff, 75vw 40vh #ff69b4, 90vw 15vh #fff, 5vw 80vh #ff1493, 40vw 90vh #fff, 65vw 60vh #ffb6c1; }
+        .stars2 { width: 2px; height: 2px; box-shadow: 20vw 20vh #fff, 45vw 45vh #ffb6c1, 70vw 10vh #fff, 15vw 75vh #ff69b4, 85vw 60vh #fff, 35vw 85vh #ff1493; animation-delay: 1s; }
+        .stars3 { width: 3px; height: 3px; box-shadow: 55vw 20vh #fff, 10vw 40vh #ffb6c1, 80vw 25vh #fff, 30vw 65vh #ff69b4; animation-delay: 2s; }
 
         .container { 
             position: relative; z-index: 1; 
             height: 100vh; width: 100%;
             display: flex; flex-direction: column; 
             align-items: center; justify-content: center; 
-            padding: 10px;
+            padding: 10px; text-align: center;
         }
 
-                  /* ИСПРАВЛЕННОЕ ТОП-ЛОГО: ЦЕНТРИРОВАНИЕ И РАЗМЕР */
+        /* ИСПРАВЛЕННЫЕ ЛОГОТИПЫ */
         .top-logo-link { 
             display: block; 
-            width: 140px; 
-            max-width: 30%; 
-            margin: 0 auto 15px auto; /* 0 сверху, auto по бокам (центр), 15px снизу */
-            transition: transform 0.2s;
-            text-align: center;
+            width: 140px; max-width: 30%; 
+            margin-bottom: 15px; 
+            text-decoration: none;
         }
-        
-        .top-logo { 
-            width: 100%; 
-            height: auto; 
-            display: block;
-        }
+        .top-logo { width: 100%; height: auto; display: block; }
 
+        .main-logo { width: 220px; max-width: 55%; height: auto; margin-bottom: 25px; }
 
-        .main-logo { width: 200px; max-width: 50%; height: auto; margin-bottom: 25px; }
-
+        /* ОБЛОЖКА */
         .cover-wrapper { 
             perspective: 1000px; 
-            width: 80vw; 
-            max-width: 380px; 
+            width: 80vw; max-width: 380px; 
             aspect-ratio: 1 / 1; 
-            cursor: pointer; 
-            margin-bottom: 35px; 
+            cursor: pointer; margin-bottom: 35px; 
         }
         .cover-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
         .flipped .cover-inner { transform: rotateY(180deg); }
@@ -68,29 +55,24 @@
         .cover-front { background: url('./front.jpg') center/cover no-repeat; }
         .cover-back { background: url('./back.jpg') center/cover no-repeat; transform: rotateY(180deg); }
 
-        .controls { width: 100%; text-align: center; }
+        /* КНОПКИ */
+        .controls { width: 100%; }
         .main-btn { 
-            font-size: 24px; 
-            color: #ff69b4; text-decoration: none; 
+            font-size: 24px; color: #ff69b4; text-decoration: none; 
             display: flex; flex-direction: column; gap: 8px; 
-            margin-bottom: 40px; cursor: pointer; transition: 0.2s; line-height: 1;
+            margin-bottom: 40px; cursor: pointer; line-height: 1;
         }
         .bottom-row { display: flex; justify-content: center; gap: 30px; }
-        .side-btn { 
-            color: #fff; text-decoration: none; 
-            font-size: 11px; 
-            cursor: pointer; opacity: 0.8; transition: 0.3s; 
+        .side-btn { color: #fff; text-decoration: none; font-size: 11px; opacity: 0.8; transition: 0.3s; }
+
+        .main-btn:hover, .side-btn:hover, .top-logo-link:hover { 
+            color: #ff1493; filter: brightness(1.3); opacity: 1; 
         }
 
-        .main-btn:hover, .side-btn:hover { 
-            color: #ff1493; 
-            filter: brightness(1.3);
-            opacity: 1; 
-        }
-
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
         @media (max-height: 750px) {
-            .top-logo { width: 90px; }
-            .main-logo { width: 150px; }
+            .top-logo-link { width: 90px; }
+            .main-logo { width: 160px; }
             .cover-wrapper { max-width: 300px; margin-bottom: 20px; }
             .main-btn { font-size: 20px; margin-bottom: 30px; }
         }
@@ -102,14 +84,15 @@
     <div class="stars3"></div>
 
     <div class="container">
-            <div class="container">
-        <!-- САМОЕ ВЕРХНЕЕ ЛОГО С ПЕРЕХОДОМ НА МЕРЧ -->
+        <!-- КЛИКАБЕЛЬНОЕ ТОП-ЛОГО -->
         <a href="merch.html" class="top-logo-link">
             <img src="top-logo.png" alt="MERCH" class="top-logo">
         </a>
-        
+
+        <!-- ОСНОВНОЕ ЛОГО -->
         <img src="logo.png" alt="" class="main-logo">
 
+        <!-- ОБЛОЖКА -->
         <div class="cover-wrapper" onclick="this.classList.toggle('flipped')">
             <div class="cover-inner">
                 <div class="cover-front"></div>
@@ -117,6 +100,7 @@
             </div>
         </div>
 
+        <!-- КНОПКИ -->
         <div class="controls">
             <a onclick="downloadAlbum()" class="main-btn">
                 <span>ХОРОШО</span>
