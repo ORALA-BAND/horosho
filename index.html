@@ -4,31 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>horosho</title>
-    <!-- ИСПРАВЛЕНО: Правильная ссылка на пиксельный шрифт -->
     <link href="https://googleapis.com" rel="stylesheet">
     
     <style>
         body, html { 
             margin: 0; padding: 0; height: 100%; width: 100%; 
             background: #050505; 
-            font-family: 'Press Start 2P', system-ui; /* ИСПРАВЛЕНО: Шрифт подтянется отсюда */
+            font-family: 'Press Start 2P', cursive;
             overflow: hidden; 
             color: #fff; 
         }
 
-        /* ЗВЕЗДНЫЙ ФОН: теперь это маленькие точки, а не один контур */
+        /* МНОГО ЗВЕЗД В РАЗНЫХ МЕСТАХ */
         .stars {
             position: fixed; top: 0; left: 0; width: 2px; height: 2px;
             background: transparent;
-            /* ИСПРАВЛЕНО: создаем много мелких теней-звезд */
+            /* Генерация множества точек по всему экрану */
             box-shadow: 
-                10vw 20vh #ffb6c1, 50vw 10vh #ff69b4, 80vw 30vh #ffb6c1, 
-                20vw 70vh #ff1493, 60vw 85vh #ffb6c1, 90vw 60vh #ff69b4, 
-                30vw 40vh #ffb6c1, 5vw 90vh #ff1493, 45vw 45vh #fff;
-            animation: twinkle 3s infinite ease-in-out;
+                15vw 10vh #fff, 35vw 25vh #ffb6c1, 65vw 15vh #ff69b4, 85vw 40vh #fff,
+                10vw 60vh #ff1493, 30vw 80vh #ffb6c1, 55vw 70vh #fff, 75vw 90vh #ff69b4,
+                95vw 20vh #ff1493, 45vw 50vh #fff, 20vw 35vh #ffb6c1, 80vw 65vh #ff69b4,
+                5vw 15vh #fff, 90vw 85vh #ff1493, 40vw 5vh #ffb6c1, 70vw 45vh #fff;
+            animation: twinkle 4s infinite ease-in-out;
             z-index: 0;
         }
-        @keyframes twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        @keyframes twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
 
         .container { 
             position: relative; z-index: 1; 
@@ -36,40 +36,50 @@
             flex-direction: column; align-items: center; justify-content: center; 
         }
 
-        /* ОБЛОЖКА */
-        .cover-wrapper { perspective: 1000px; width: 280px; height: 280px; cursor: pointer; margin-bottom: 30px; }
+        /* ЛОГОТИП ГРУППЫ */
+        .logo {
+            width: 200px; /* Отрегулируй ширину под свое лого */
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        /* УВЕЛИЧЕННАЯ ОБЛОЖКА */
+        .cover-wrapper { perspective: 1000px; width: 350px; height: 350px; cursor: pointer; margin-bottom: 30px; }
         .cover-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
         .flipped .cover-inner { transform: rotateY(180deg); }
 
         .cover-front, .cover-back { 
             position: absolute; width: 100%; height: 100%; 
-            backface-visibility: hidden; border-radius: 10px; 
-            border: 2px solid #ff69b4; 
-            background-color: #111; /* Цвет фона, если картинка не прогрузится */
+            backface-visibility: hidden; border-radius: 15px; 
+            border: 3px solid #ff69b4; 
+            background-color: #111;
         }
-        
-        /* ИСПРАВЛЕНО: пути. Убедись, что файлы лежат в той же папке на GitHub */
         .cover-front { background: url('./front.jpg') center/cover no-repeat; }
         .cover-back { background: url('./back.jpg') center/cover no-repeat; transform: rotateY(180deg); }
 
         /* КНОПКИ */
         .controls { width: 90%; max-width: 500px; text-align: center; }
         
+        /* Главная кнопка: текст один под другим */
         .main-btn { 
-            font-size: 14px; color: #ff69b4; 
-            text-decoration: none; /* Убирает подчеркивание */
-            display: inline-block; margin-bottom: 40px; 
+            font-size: 20px; color: #ff69b4; 
+            text-decoration: none;
+            display: flex; flex-direction: column; /* Текст в колонку */
+            gap: 10px; margin-bottom: 40px; 
             cursor: pointer; transition: 0.2s; 
+            line-height: 1.2;
         }
         
-        .bottom-row { display: flex; justify-content: space-between; gap: 10px; }
+        /* Нижние кнопки: побольше и ближе */
+        .bottom-row { display: flex; justify-content: center; gap: 30px; }
         
         .side-btn { 
-            color: #fff; text-decoration: none; /* Убирает подчеркивание */
-            font-size: 8px; cursor: pointer; opacity: 0.8;
+            color: #fff; text-decoration: none; 
+            font-size: 11px; cursor: pointer; 
+            max-width: 150px; line-height: 1.4;
         }
         
-        .main-btn:hover, .side-btn:hover { color: #ff1493; transform: scale(1.05); opacity: 1; }
+        .main-btn:hover, .side-btn:hover { color: #ff1493; transform: scale(1.05); }
     </style>
 </head>
 <body>
@@ -77,6 +87,9 @@
     <div class="stars"></div>
 
     <div class="container">
+        <!-- Замени logo.png на название файла своего логотипа -->
+        <img src="logo.png" alt="Band Logo" class="logo">
+
         <div class="cover-wrapper" onclick="this.classList.toggle('flipped')">
             <div class="cover-inner">
                 <div class="cover-front"></div>
@@ -85,7 +98,10 @@
         </div>
 
         <div class="controls">
-            <a onclick="downloadAlbum()" class="main-btn">хорошо horosho</a>
+            <a onclick="downloadAlbum()" class="main-btn">
+                <span>хорошо</span>
+                <span>horosho</span>
+            </a>
             
             <div class="bottom-row">
                 <a href="ССЫЛКА_1" class="side-btn">поддержать релиз</a>
@@ -104,6 +120,7 @@
 
 </body>
 </html>
+
 
 
 
