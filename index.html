@@ -35,21 +35,22 @@
             padding: 10px;
         }
 
-                /* УВЕЛИЧЕННОЕ ТОП-ЛОГО СО ССЫЛКОЙ */
+                  /* ИСПРАВЛЕННОЕ ТОП-ЛОГО: ЦЕНТРИРОВАНИЕ И РАЗМЕР */
         .top-logo-link { 
             display: block; 
-            width: 140px; /* Тот самый размер, который был */
+            width: 140px; 
             max-width: 30%; 
-            margin-bottom: 15px; 
+            margin: 0 auto 15px auto; /* 0 сверху, auto по бокам (центр), 15px снизу */
             transition: transform 0.2s;
+            text-align: center;
         }
-        .top-logo-link:hover { transform: scale(1.05); } /* Легкий эффект при наведении */
         
         .top-logo { 
             width: 100%; 
             height: auto; 
             display: block;
         }
+
 
         .main-logo { width: 200px; max-width: 50%; height: auto; margin-bottom: 25px; }
 
