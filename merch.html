@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MERCH</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        * { text-transform: uppercase !important; box-sizing: border-box; }
+        body, html { 
+            margin: 0; padding: 0; height: 100%; width: 100%; 
+            background: #050505; font-family: 'Press Start 2P', cursive;
+            color: #fff; overflow: hidden; 
+        }
+
+        /* ЗВЕЗДНЫЙ ФОН (как на главной) */
+        .stars, .stars2 { position: fixed; top: 0; left: 0; background: transparent; animation: twinkle 4s infinite ease-in-out; }
+        @keyframes twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+        .stars { width: 1px; height: 1px; box-shadow: 10vw 10vh #fff, 50vw 5vh #fff, 80vw 85vh #ff69b4, 20vw 70vh #ff1493; }
+
+        .container { 
+            height: 100vh; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; padding: 20px;
+        }
+
+        /* КАРТОЧКА МЕРЧА (Пропорции 1080х1407) */
+        .merch-wrapper { 
+            perspective: 1000px; 
+            width: 70vw; 
+            max-width: 320px; /* Размер на ПК */
+            aspect-ratio: 1080 / 1407; 
+            cursor: pointer; margin-bottom: 30px;
+        }
+        .merch-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
+        .flipped .merch-inner { transform: rotateY(180deg); }
+
+        .merch-front, .merch-back { 
+            position: absolute; width: 100%; height: 100%; 
+            backface-visibility: hidden; border-radius: 10px; 
+            border: 2px solid #ff69b4; background-color: #111; 
+        }
+        /* Замени на свои названия файлов мерча */
+        .merch-front { background: url('./merch_front.jpg') center/cover no-repeat; }
+        .merch-back { background: url('./merch_back.jpg') center/cover no-repeat; transform: rotateY(180deg); }
+
+        .back-btn { 
+            font-size: 14px; color: #ff69b4; text-decoration: none; 
+            border: 1px solid #ff69b4; padding: 10px 20px; transition: 0.2s;
+        }
+        .back-btn:hover { background: #ff69b4; color: #000; }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="container">
+        <div class="merch-wrapper" onclick="this.classList.toggle('flipped')">
+            <div class="merch-inner">
+                <div class="merch-front"></div>
+                <div class="merch-back"></div>
+            </div>
+        </div>
+        <a href="index.html" class="back-btn">НАЗАД / BACK</a>
+    </div>
+</body>
+</html>
