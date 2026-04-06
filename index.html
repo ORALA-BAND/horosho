@@ -35,7 +35,22 @@
             padding: 10px;
         }
 
-        .top-logo { width: 140px; max-width: 30%; height: auto; margin-bottom: 15px; }
+                /* УВЕЛИЧЕННОЕ ТОП-ЛОГО СО ССЫЛКОЙ */
+        .top-logo-link { 
+            display: block; 
+            width: 140px; /* Тот самый размер, который был */
+            max-width: 30%; 
+            margin-bottom: 15px; 
+            transition: transform 0.2s;
+        }
+        .top-logo-link:hover { transform: scale(1.05); } /* Легкий эффект при наведении */
+        
+        .top-logo { 
+            width: 100%; 
+            height: auto; 
+            display: block;
+        }
+
         .main-logo { width: 200px; max-width: 50%; height: auto; margin-bottom: 25px; }
 
         .cover-wrapper { 
@@ -86,9 +101,12 @@
     <div class="stars3"></div>
 
     <div class="container">
-        <a href="merch.html">
-    <img src="top-logo.png" alt="" class="top-logo">
-</a>
+            <div class="container">
+        <!-- САМОЕ ВЕРХНЕЕ ЛОГО С ПЕРЕХОДОМ НА МЕРЧ -->
+        <a href="merch.html" class="top-logo-link">
+            <img src="top-logo.png" alt="MERCH" class="top-logo">
+        </a>
+        
         <img src="logo.png" alt="" class="main-logo">
 
         <div class="cover-wrapper" onclick="this.classList.toggle('flipped')">
