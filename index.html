@@ -3,92 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>horosho</title>
+    <title>ALBUM RELEASE</title>
     <link href="https://googleapis.com" rel="stylesheet">
-    
     <style>
         body, html { 
             margin: 0; padding: 0; height: 100%; width: 100%; 
-            background: #050505; 
-            font-family: 'Press Start 2P', cursive;
-            overflow: hidden; 
-            color: #fff; 
+            background: #050505; font-family: 'Press Start 2P', cursive;
+            overflow: hidden; color: #fff; 
         }
 
-        /* МНОГО ЗВЕЗД В РАЗНЫХ МЕСТАХ */
-        .stars {
-            position: fixed; top: 0; left: 0; width: 2px; height: 2px;
-            background: transparent;
-            /* Генерация множества точек по всему экрану */
-            box-shadow: 
-                15vw 10vh #fff, 35vw 25vh #ffb6c1, 65vw 15vh #ff69b4, 85vw 40vh #fff,
-                10vw 60vh #ff1493, 30vw 80vh #ffb6c1, 55vw 70vh #fff, 75vw 90vh #ff69b4,
-                95vw 20vh #ff1493, 45vw 50vh #fff, 20vw 35vh #ffb6c1, 80vw 65vh #ff69b4,
-                5vw 15vh #fff, 90vw 85vh #ff1493, 40vw 5vh #ffb6c1, 70vw 45vh #fff;
-            animation: twinkle 4s infinite ease-in-out;
-            z-index: 0;
-        }
+        /* ТРИ СЛОЯ ЗВЕЗД РАЗНОГО РАЗМЕРА */
+        .stars, .stars2, .stars3 { position: fixed; top: 0; left: 0; background: transparent; animation: twinkle 4s infinite ease-in-out; z-index: 0; }
         @keyframes twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+
+        .stars { width: 1px; height: 1px; box-shadow: 10vw 10vh #fff, 25vw 30vh #ffb6c1, 50vw 5vh #fff, 75vw 40vh #ff69b4, 90vw 15vh #fff, 5vw 80vh #ff1493, 40vw 90vh #fff, 65vw 60vh #ffb6c1, 15vw 55vh #fff, 80vw 85vh #ff69b4, 33vw 12vh #fff, 88vw 77vh #ffb6c1; }
+        .stars2 { width: 2px; height: 2px; box-shadow: 20vw 20vh #fff, 45vw 45vh #ffb6c1, 70vw 10vh #fff, 15vw 75vh #ff69b4, 85vw 60vh #fff, 35vw 85vh #ff1493, 60vw 30vh #fff, 95vw 90vh #ffb6c1; animation-delay: 1s; }
+        .stars3 { width: 3px; height: 3px; box-shadow: 55vw 20vh #fff, 10vw 40vh #ffb6c1, 80vw 25vh #fff, 30vw 65vh #ff69b4, 50vw 80vh #fff; animation-delay: 2s; }
 
         .container { 
             position: relative; z-index: 1; 
             height: 100vh; display: flex; 
             flex-direction: column; align-items: center; justify-content: center; 
+            box-sizing: border-box; padding-bottom: 60px; /* Отступ снизу */
         }
 
-        /* ЛОГОТИП ГРУППЫ */
-        .logo {
-            width: 200px; /* Отрегулируй ширину под свое лого */
-            height: auto;
-            margin-bottom: 20px;
-        }
+        .logo { width: 180px; height: auto; margin-bottom: 20px; }
 
-        /* УВЕЛИЧЕННАЯ ОБЛОЖКА */
-        .cover-wrapper { perspective: 1000px; width: 350px; height: 350px; cursor: pointer; margin-bottom: 30px; }
+        .cover-wrapper { perspective: 1000px; width: 320px; height: 320px; cursor: pointer; margin-bottom: 25px; }
         .cover-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
         .flipped .cover-inner { transform: rotateY(180deg); }
-
-        .cover-front, .cover-back { 
-            position: absolute; width: 100%; height: 100%; 
-            backface-visibility: hidden; border-radius: 15px; 
-            border: 3px solid #ff69b4; 
-            background-color: #111;
-        }
+        .cover-front, .cover-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; border: 3px solid #ff69b4; background-color: #111; }
         .cover-front { background: url('./front.jpg') center/cover no-repeat; }
         .cover-back { background: url('./back.jpg') center/cover no-repeat; transform: rotateY(180deg); }
 
-        /* КНОПКИ */
         .controls { width: 90%; max-width: 500px; text-align: center; }
         
-        /* Главная кнопка: текст один под другим */
         .main-btn { 
-            font-size: 20px; color: #ff69b4; 
-            text-decoration: none;
-            display: flex; flex-direction: column; /* Текст в колонку */
-            gap: 10px; margin-bottom: 40px; 
-            cursor: pointer; transition: 0.2s; 
-            line-height: 1.2;
+            font-size: 20px; color: #ff69b4; text-decoration: none; 
+            display: flex; flex-direction: column; gap: 4px; /* Очень близко */
+            margin-bottom: 30px; cursor: pointer; transition: 0.2s; line-height: 1;
         }
         
-        /* Нижние кнопки: побольше и ближе */
-        .bottom-row { display: flex; justify-content: center; gap: 30px; }
-        
-        .side-btn { 
-            color: #fff; text-decoration: none; 
-            font-size: 11px; cursor: pointer; 
-            max-width: 150px; line-height: 1.4;
-        }
-        
-        .main-btn:hover, .side-btn:hover { color: #ff1493; transform: scale(1.05); }
+        .bottom-row { display: flex; justify-content: center; gap: 15px; } /* Кнопки ближе */
+        .side-btn { color: #fff; text-decoration: none; font-size: 10px; cursor: pointer; opacity: 0.8; }
+        .main-btn:hover, .side-btn:hover { color: #ff1493; transform: scale(1.05); opacity: 1; }
     </style>
 </head>
 <body>
-
     <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
 
     <div class="container">
-        <!-- Замени logo.png на название файла своего логотипа -->
-        <img src="logo.png" alt="Band Logo" class="logo">
+        <img src="logo.png" alt="" class="logo">
 
         <div class="cover-wrapper" onclick="this.classList.toggle('flipped')">
             <div class="cover-inner">
@@ -102,7 +69,6 @@
                 <span>хорошо</span>
                 <span>horosho</span>
             </a>
-            
             <div class="bottom-row">
                 <a href="ССЫЛКА_1" class="side-btn">поддержать релиз</a>
                 <a href="ССЫЛКА_2" class="side-btn">support the release</a>
@@ -117,9 +83,9 @@
             }
         }
     </script>
-
 </body>
 </html>
+
 
 
 
