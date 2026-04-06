@@ -6,13 +6,18 @@
     <title>ALBUM RELEASE</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
+        /* ПРИНУДИТЕЛЬНЫЙ CAPS LOCK ДЛЯ ВСЕГО */
+        * {
+            text-transform: uppercase !important;
+            box-sizing: border-box;
+        }
+
         body, html { 
             margin: 0; padding: 0; height: 100%; width: 100%; 
             background: #050505; 
             font-family: 'Press Start 2P', 'Courier New', Courier, monospace;
             color: #fff; 
             overflow: hidden; 
-            text-transform: uppercase; 
         }
 
         /* ЗВЕЗДЫ */
@@ -27,35 +32,39 @@
             height: 100vh; width: 100%;
             display: flex; flex-direction: column; 
             align-items: center; justify-content: center; 
-            box-sizing: border-box; 
-            padding-bottom: 20px;
+            padding: 10px;
         }
 
-        /* СТИЛИ ДЛЯ ЛОГОТИПОВ */
-        .top-logo { width: 100px; max-width: 25%; height: auto; margin-bottom: 10px; }
-        .main-logo { width: 140px; max-width: 35%; height: auto; margin-bottom: 20px; }
+        .top-logo { width: 140px; max-width: 30%; height: auto; margin-bottom: 15px; }
+        .main-logo { width: 200px; max-width: 50%; height: auto; margin-bottom: 25px; }
 
-        /* ОБЛОЖКА */
         .cover-wrapper { 
             perspective: 1000px; 
-            width: 70vw; max-width: 300px; aspect-ratio: 1 / 1; 
-            cursor: pointer; margin-bottom: 25px; 
+            width: 80vw; 
+            max-width: 380px; 
+            aspect-ratio: 1 / 1; 
+            cursor: pointer; 
+            margin-bottom: 35px; 
         }
         .cover-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
         .flipped .cover-inner { transform: rotateY(180deg); }
-        .cover-front, .cover-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px; border: 2px solid #ff69b4; background-color: #111; }
+        .cover-front, .cover-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; border: 3px solid #ff69b4; background-color: #111; }
         .cover-front { background: url('./front.jpg') center/cover no-repeat; }
         .cover-back { background: url('./back.jpg') center/cover no-repeat; transform: rotateY(180deg); }
 
-        /* КНОПКИ */
         .controls { width: 100%; text-align: center; }
         .main-btn { 
-            font-size: 18px; color: #ff69b4; text-decoration: none; 
-            display: flex; flex-direction: column; gap: 4px; 
-            margin-bottom: 25px; cursor: pointer; transition: 0.2s; line-height: 1.1;
+            font-size: 24px; 
+            color: #ff69b4; text-decoration: none; 
+            display: flex; flex-direction: column; gap: 8px; 
+            margin-bottom: 40px; cursor: pointer; transition: 0.2s; line-height: 1;
         }
-        .bottom-row { display: flex; justify-content: center; gap: 20px; }
-        .side-btn { color: #fff; text-decoration: none; font-size: 9px; cursor: pointer; opacity: 0.8; transition: 0.3s; }
+        .bottom-row { display: flex; justify-content: center; gap: 30px; }
+        .side-btn { 
+            color: #fff; text-decoration: none; 
+            font-size: 11px; 
+            cursor: pointer; opacity: 0.8; transition: 0.3s; 
+        }
 
         .main-btn:hover, .side-btn:hover { 
             color: #ff1493; 
@@ -63,12 +72,11 @@
             opacity: 1; 
         }
 
-        /* Коррекция для маленьких экранов */
-        @media (max-height: 650px) {
-            .top-logo { width: 70px; }
-            .main-logo { width: 100px; }
-            .cover-wrapper { max-width: 240px; margin-bottom: 15px; }
-            .main-btn { font-size: 16px; margin-bottom: 15px; }
+        @media (max-height: 750px) {
+            .top-logo { width: 90px; }
+            .main-logo { width: 150px; }
+            .cover-wrapper { max-width: 300px; margin-bottom: 20px; }
+            .main-btn { font-size: 20px; margin-bottom: 30px; }
         }
     </style>
 </head>
@@ -78,10 +86,7 @@
     <div class="stars3"></div>
 
     <div class="container">
-        <!-- САМОЕ ВЕРХНЕЕ ЛОГО -->
         <img src="top-logo.png" alt="" class="top-logo">
-        
-        <!-- ВТОРОЕ ЛОГО -->
         <img src="logo.png" alt="" class="main-logo">
 
         <div class="cover-wrapper" onclick="this.classList.toggle('flipped')">
@@ -93,12 +98,12 @@
 
         <div class="controls">
             <a onclick="downloadAlbum()" class="main-btn">
-                <span>хорошо</span>
-                <span>horosho</span>
+                <span>ХОРОШО</span>
+                <span>HOROSHO</span>
             </a>
             <div class="bottom-row">
-                <a href="ССЫЛКА_1" class="side-btn">поддержать релиз</a>
-                <a href="ССЫЛКА_2" class="side-btn">support the release</a>
+                <a href="ССЫЛКА_1" class="side-btn">ПОДДЕРЖАТЬ РЕЛИЗ</a>
+                <a href="ССЫЛКА_2" class="side-btn">SUPPORT THE RELEASE</a>
             </div>
         </div>
     </div>
