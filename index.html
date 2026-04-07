@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XP Music Album</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -9,53 +10,50 @@
 
     <!-- Экран загрузки -->
     <div id="boot-screen">
-        <img src="assets/logo.png" alt="Logo" class="boot-logo">
-        <div class="progress-bar"><span></span></div>
+        <div style="color:white; font-family:sans-serif; text-align:center;">
+            <h1 style="margin-bottom:10px;">WINDOWS XP</h1>
+            <div class="progress-bar"><span></span></div>
+        </div>
     </div>
 
     <!-- Рабочий стол -->
     <main class="desktop">
         <div class="icon" onclick="openFolder('my-computer')">
-            <img src="assets/computer.png">
+            <img src="https://alexmeub.com">
             <span>Мой компьютер</span>
         </div>
         <div class="icon" onclick="openFolder('player')">
-            <img src="assets/player.png">
+            <img src="https://alexmeub.com">
             <span>Плеер</span>
         </div>
         <div class="icon" onclick="openFolder('secret')">
-            <img src="assets/folder.png">
+            <img src="https://alexmeub.com">
             <span>Секретно</span>
         </div>
         <div class="icon" onclick="openFolder('trash')">
-            <img src="assets/trash.png">
+            <img src="https://alexmeub.com">
             <span>Корзина</span>
+        </div>
+
+        <!-- Окно (одно на всех) -->
+        <div id="window-template" class="window" style="display: none;">
+            <div class="window-header">
+                <span class="window-title">Папка</span>
+                <div class="window-controls">
+                    <button class="win-btn close-btn" onclick="closeWindow()">X</button>
+                </div>
+            </div>
+            <div class="window-content" id="window-body"></div>
         </div>
     </main>
 
     <!-- Панель задач -->
     <footer class="taskbar">
         <div class="start-button">Пуск</div>
-        <div class="time" id="clock">12:00</div>
+        <div class="time" id="clock">00:00</div>
     </footer>
 
     <audio id="startup-sound" src="assets/startup.mp3"></audio>
     <script src="script.js"></script>
-
-    <!-- Шаблон окна (по умолчанию скрыт) -->
-<div id="window-template" class="window" style="display: none;">
-    <div class="window-header">
-        <span class="window-title">Папка</span>
-        <div class="window-controls">
-            <button class="win-btn">_</button>
-            <button class="win-btn">[ ]</button>
-            <button class="win-btn close-btn" onclick="closeWindow()">X</button>
-        </div>
-    </div>
-    <div class="window-content" id="window-body">
-        <!-- Сюда JS будет вставлять содержимое -->
-    </div>
-</div>
-
 </body>
 </html>
