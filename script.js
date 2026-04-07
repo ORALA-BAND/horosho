@@ -1,68 +1,50 @@
-// 1. Логика загрузки и часов
 window.onload = () => {
     setTimeout(() => {
-        const bootScreen = document.getElementById('boot-screen');
-        if (bootScreen) bootScreen.style.display = 'none';
-        
-        const audio = document.getElementById('startup-sound');
-        if (audio) audio.play().catch(() => console.log("Звук заблокирован"));
+        document.getElementById('boot-screen').style.display = 'none';
+        document.getElementById('startup-sound').play().catch(() => {});
     }, 3000);
-    
     setInterval(updateTime, 1000);
     updateTime();
 };
 
 function updateTime() {
-    const clock = document.getElementById('clock');
-    if (clock) {
-        const now = new Date();
-        clock.innerText = now.getHours() + ":" + now.getMinutes().toString().padStart(2, '0');
-    }
+    const now = new Date();
+    document.getElementById('clock').innerText = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
 }
 
-// 2. Контент папок
 const folderContent = {
     'my-computer': `
-        <div style="display:flex; gap:20px; padding:10px;">
-            <div style="text-align:center; width:80px;">
-                <a href="ССЫЛКА_РФ" target="_blank"><img src="https://alexmeub.com" width="32"><br>Донат (РФ)</a>
-            </div>
-            <div style="text-align:center; width:80px;">
-                <a href="ССЫЛКА_ИНТ" target="_blank"><img src="https://alexmeub.com" width="32"><br>PayPal</a>
-            </div>
+        <div style="padding:20px; color:white;">
+            <p onclick="window.open('ССЫЛКА_РФ')" style="cursor:pointer; color:#ff00ff;">> Поддержать (РФ)</p>
+            <p onclick="window.open('ССЫЛКА_ИНТ')" style="cursor:pointer; color:#ff00ff;">> Support (PayPal)</p>
         </div>`,
     
     'player': `
-        <div style="background:#fff; border:1px inset #808080; padding:10px;">
-            <div style="display:flex; gap:10px; margin-bottom:10px;">
-                <img src="assets/album-cover.jpg" style="width:60px; height:60px; border:1px solid #000;">
-                <div>
-                    <b id="track-title" style="font-size:12px;">Выберите трек</b><br>
-                    <audio id="main-audio" controls style="width:180px; height:30px; margin-top:5px;"></audio>
-                </div>
+        <div class="synth-player">
+            <img src="assets/album-cover.jpg" class="main-cover">
+            <div id="track-title" class="neon-text">ВЫБЕРИТЕ ТРЕК</div>
+            <audio id="main-audio" controls></audio>
+            <div class="playlist-container">
+                <div class="tr-item" onclick="playTrack('track1.mp3', '01. Intro')">01. Intro</div>
+                <div class="tr-item" onclick="playTrack('track2.mp3', '02. Midnight')">02. Midnight</div>
+                <div class="tr-item" onclick="playTrack('track3.mp3', '03. Neon')">03. Neon</div>
             </div>
-            <div style="height:100px; overflow-y:auto; border-top:1px solid #ccc; font-size:11px;">
-                <div class="tr-item" onclick="playTrack('track1.mp3', '01. Интро')" style="padding:4px; cursor:pointer;">01. Интро</div>
-                <div class="tr-item" onclick="playTrack('track2.mp3', '02. Трек 2')" style="padding:4px; cursor:pointer;">02. Трек 2</div>
-                <div class="tr-item" onclick="playTrack('track3.mp3', '03. Трек 3')" style="padding:4px; cursor:pointer;">03. Трек 3</div>
-            </div>
+            <p onclick="window.open('ССЫЛКА_ДИСК')" style="font-size:10px; margin-top:10px; cursor:pointer;">СКАЧАТЬ АЛЬБОМ</p>
         </div>`,
 
     'secret': `
-        <div id="lock" style="text-align:center;">
-            <p>Введите пароль:</p>
-            <input type="password" id="pass_input" style="width:80px;">
-            <button onclick="checkPass()">OK</button>
+        <div id="lock" style="padding:20px; text-align:center; color:white;">
+            <p>PASSWORD:</p>
+            <input type="password" id="psw" style="background:none; border:1px solid #ff00ff; color:white;">
+            <button onclick="checkPass()" style="background:#ff00ff; border:none; cursor:pointer;">OK</button>
         </div>
-        <div id="secret-files" style="display:none; text-align:center;">
-            <p>Успешно! Кликни, чтобы сменить фон:</p>
-            <img src="assets/secret1.jpg" onclick="document.querySelector('.desktop').style.backgroundImage='url(assets/secret1.jpg)'" style="width:40%; cursor:pointer;">
+        <div id="sec-files" style="display:none; padding:10px; text-align:center;">
+            <img src="assets/secret1.jpg" style="width:100%; border:1px solid #ff00ff;">
         </div>`,
 
-    'trash': `<p style="text-align:center;">Тут пока пусто...</p>`
+    'trash': `<div style="padding:20px; color:#555;">FOLDER IS EMPTY</div>`
 };
 
-// 3. Функции управления
 function openFolder(id) {
     const win = document.getElementById('window-template');
     document.getElementById('window-body').innerHTML = folderContent[id];
@@ -75,12 +57,10 @@ function closeWindow() {
 }
 
 function checkPass() {
-    if(document.getElementById('pass_input').value === '1234') {
+    if(document.getElementById('psw').value === '1234') {
         document.getElementById('lock').style.display = 'none';
-        document.getElementById('secret-files').style.display = 'block';
-    } else {
-        alert('Неверно!');
-    }
+        document.getElementById('sec-files').style.display = 'block';
+    } else { alert('ACCESS DENIED'); }
 }
 
 function playTrack(file, title) {
