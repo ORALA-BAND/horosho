@@ -2,123 +2,44 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ALBUM RELEASE</title>
-    <link href="https://googleapis.com" rel="stylesheet">
-    <style>
-        /* ПРИНУДИТЕЛЬНЫЙ CAPS ДЛЯ ВСЕГО */
-        * { text-transform: uppercase !important; box-sizing: border-box; }
-
-        body, html { 
-            margin: 0; padding: 0; height: 100%; width: 100%; 
-            background: #050505; 
-            font-family: 'Press Start 2P', 'Courier New', Courier, monospace;
-            color: #fff; overflow: hidden; 
-        }
-
-        /* ЗВЕЗДЫ */
-        .stars, .stars2, .stars3 { position: fixed; top: 0; left: 0; background: transparent; animation: twinkle 4s infinite ease-in-out; z-index: 0; }
-        @keyframes twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
-        .stars { width: 1px; height: 1px; box-shadow: 10vw 10vh #fff, 25vw 30vh #ffb6c1, 50vw 5vh #fff, 75vw 40vh #ff69b4, 90vw 15vh #fff, 5vw 80vh #ff1493, 40vw 90vh #fff, 65vw 60vh #ffb6c1; }
-        .stars2 { width: 2px; height: 2px; box-shadow: 20vw 20vh #fff, 45vw 45vh #ffb6c1, 70vw 10vh #fff, 15vw 75vh #ff69b4, 85vw 60vh #fff, 35vw 85vh #ff1493; animation-delay: 1s; }
-        .stars3 { width: 3px; height: 3px; box-shadow: 55vw 20vh #fff, 10vw 40vh #ffb6c1, 80vw 25vh #fff, 30vw 65vh #ff69b4; animation-delay: 2s; }
-
-        .container { 
-            position: relative; z-index: 1; 
-            height: 100vh; width: 100%;
-            display: flex; flex-direction: column; 
-            align-items: center; justify-content: center; 
-            padding: 10px; text-align: center;
-        }
-
-        /* ИСПРАВЛЕННЫЕ ЛОГОТИПЫ */
-        .top-logo-link { 
-            display: block; 
-            width: 140px; max-width: 30%; 
-            margin-bottom: 15px; 
-            text-decoration: none;
-        }
-        .top-logo { width: 100%; height: auto; display: block; }
-
-        .main-logo { width: 220px; max-width: 55%; height: auto; margin-bottom: 25px; }
-
-        /* ОБЛОЖКА */
-        .cover-wrapper { 
-            perspective: 1000px; 
-            width: 80vw; max-width: 380px; 
-            aspect-ratio: 1 / 1; 
-            cursor: pointer; margin-bottom: 35px; 
-        }
-        .cover-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
-        .flipped .cover-inner { transform: rotateY(180deg); }
-        .cover-front, .cover-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; border: 3px solid #ff69b4; background-color: #111; }
-        .cover-front { background: url('./front.jpg') center/cover no-repeat; }
-        .cover-back { background: url('./back.jpg') center/cover no-repeat; transform: rotateY(180deg); }
-
-        /* КНОПКИ */
-        .controls { width: 100%; }
-        .main-btn { 
-            font-size: 24px; color: #ff69b4; text-decoration: none; 
-            display: flex; flex-direction: column; gap: 8px; 
-            margin-bottom: 40px; cursor: pointer; line-height: 1;
-        }
-        .bottom-row { display: flex; justify-content: center; gap: 30px; }
-        .side-btn { color: #fff; text-decoration: none; font-size: 11px; opacity: 0.8; transition: 0.3s; }
-
-        .main-btn:hover, .side-btn:hover, .top-logo-link:hover { 
-            color: #ff1493; filter: brightness(1.3); opacity: 1; 
-        }
-
-        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
-        @media (max-height: 750px) {
-            .top-logo-link { width: 90px; }
-            .main-logo { width: 160px; }
-            .cover-wrapper { max-width: 300px; margin-bottom: 20px; }
-            .main-btn { font-size: 20px; margin-bottom: 30px; }
-        }
-    </style>
+    <title>XP Music Album</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="stars"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div>
 
-    <div class="container">
-        <!-- КЛИКАБЕЛЬНОЕ ТОП-ЛОГО -->
-        <a href="merch.html" class="top-logo-link">
-            <img src="top-logo.png" alt="MERCH" class="top-logo">
-        </a>
-
-        <!-- ОСНОВНОЕ ЛОГО -->
-        <img src="logo.png" alt="" class="main-logo">
-
-        <!-- ОБЛОЖКА -->
-        <div class="cover-wrapper" onclick="this.classList.toggle('flipped')">
-            <div class="cover-inner">
-                <div class="cover-front"></div>
-                <div class="cover-back"></div>
-            </div>
-        </div>
-
-        <!-- КНОПКИ -->
-        <div class="controls">
-            <a onclick="downloadAlbum()" class="main-btn">
-                <span>ХОРОШО</span>
-                <span>HOROSHO</span>
-            </a>
-            <div class="bottom-row">
-                <a href="ССЫЛКА_1" class="side-btn">ПОДДЕРЖАТЬ РЕЛИЗ</a>
-                <a href="ССЫЛКА_2" class="side-btn">SUPPORT THE RELEASE</a>
-            </div>
-        </div>
+    <!-- Экран загрузки -->
+    <div id="boot-screen">
+        <img src="assets/logo.png" alt="Logo" class="boot-logo">
+        <div class="progress-bar"><span></span></div>
     </div>
 
-    <script>
-        function downloadAlbum() {
-            if (confirm("СКАЧАТЬ АЛЬБОМ? / DOWNLOAD?")) {
-                window.location.href = "ССЫЛКА_НА_ФАЙЛ"; 
-            }
-        }
-    </script>
+    <!-- Рабочий стол -->
+    <main class="desktop">
+        <div class="icon" onclick="openFolder('my-computer')">
+            <img src="assets/computer.png">
+            <span>Мой компьютер</span>
+        </div>
+        <div class="icon" onclick="openFolder('player')">
+            <img src="assets/player.png">
+            <span>Плеер</span>
+        </div>
+        <div class="icon" onclick="openFolder('secret')">
+            <img src="assets/folder.png">
+            <span>Секретно</span>
+        </div>
+        <div class="icon" onclick="openFolder('trash')">
+            <img src="assets/trash.png">
+            <span>Корзина</span>
+        </div>
+    </main>
+
+    <!-- Панель задач -->
+    <footer class="taskbar">
+        <div class="start-button">Пуск</div>
+        <div class="time" id="clock">12:00</div>
+    </footer>
+
+    <audio id="startup-sound" src="assets/startup.mp3"></audio>
+    <script src="script.js"></script>
 </body>
 </html>
