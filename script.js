@@ -101,8 +101,13 @@ function openViewer(n) {
 }
 
 function closeViewer() {
-    document.getElementById('photo-viewer').style.display = 'none';
+    console.log("Закрываем просмотрщик"); // Для теста в консоли
+    const viewer = document.getElementById('photo-viewer');
+    if (viewer) {
+        viewer.style.display = 'none';
+    }
 }
+
 
 function changePhoto(step) {
     currentPhotoIdx += step;
