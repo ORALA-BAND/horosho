@@ -63,18 +63,41 @@ const folderContent = {
             <p onclick="window.open('ССЫЛКА_РФ')" style="cursor:pointer; color:blue; text-decoration:underline;">> Донат Россия (СБП)</p>
             <p onclick="window.open('ССЫЛКА_ИНТ')" style="cursor:pointer; color:blue; text-decoration:underline; margin-top:10px;">> Support International (PayPal)</p>
         </div>`,
-    'secret': `
-        <div id="lock" style="text-align:center; color:black; padding:10px;">
-            <p>ДОСТУП ЗАБЛОКИРОВАН</p>
-            <input type="password" id="psw" style="margin:10px 0; width:100px; border:1px solid #7f9db9;">
-            <br><button onclick="checkPass()" style="cursor:pointer; padding:2px 10px;">ВВОД</button>
+    // Внутри folderContent:
+'secret': `
+    <div id="lock" style="text-align:center; padding:10px;">
+        <p>PASSWORD:</p>
+        <input type="password" id="psw" style="width:100px;">
+        <button onclick="checkPass()">OK</button>
+    </div>
+    <div id="sec-files" style="display:none;">
+        <div class="photo-grid" id="gallery-root">
+            ${Array.from({length: 24}, (_, i) => 
+                `<img src="assets/${i+1}.jpg" class="secret-thumb" onclick="openViewer(${i+1})">`
+            ).join('')}
         </div>
-        <div id="sec-files" style="display:none; text-align:center; padding:10px;">
-            <img src="assets/secret1.jpg" onclick="document.querySelector('.desktop').style.background='url(assets/secret1.jpg) center/cover'" style="width:100%; border:1px solid #000; cursor:pointer;">
-            <p style="font-size:10px; color:black; margin-top:5px;">Кликни, чтобы сменить фон</p>
-        </div>`,
-    'trash': `<div style="text-align:center; color:#888; padding:30px; font-size:12px;">КОРЗИНА ПУСТА (МЕРЧ СКОРО)</div>`
-};
+    </div>`,
+
+// Добавь эти переменные и функции в самый конец script.js:
+let currentPhotoIdx = 1;
+
+function openViewer(n) {
+    currentPhotoIdx = n;
+    document.getElementById('photo-viewer').style.display = 'flex';
+    document.getElementById('viewer-img').src = `assets/${n}.jpg`;
+}
+
+function closeViewer() {
+    document.getElementById('photo-viewer').style.display = 'none';
+}
+
+function changePhoto(step) {
+    currentPhotoIdx += step;
+    if (currentPhotoIdx > 24) currentPhotoIdx = 1;
+    if (currentPhotoIdx < 1) currentPhotoIdx = 24;
+    document.getElementById('viewer-img').src = `assets/${currentPhotoIdx}.jpg`;
+}
+
 
 // Логика открытия папок
 function openFolder(id) {
