@@ -84,6 +84,15 @@
         </div>
     </div>
 
+    <!-- Окно просмотра фото (Lightbox) -->
+<div id="photo-viewer" style="display:none;">
+    <span class="close-viewer" onclick="closeViewer()">&times;</span>
+    <button class="nav-btn prev" onclick="changePhoto(-1)">&#10094;</button>
+    <img id="viewer-img" src="">
+    <button class="nav-btn next" onclick="changePhoto(1)">&#10095;</button>
+</div>
+
+
 
     </main>
 
