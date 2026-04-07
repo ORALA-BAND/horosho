@@ -84,20 +84,23 @@
         </div>
     </div>
 
-    <!-- Окно просмотра фото (Lightbox) -->
-<div id="photo-viewer" style="display:none; flex-direction: column;">
-    <span class="close-viewer" onclick="closeViewer()">&times;</span>
-    <div style="position: relative; display: flex; align-items: center; justify-content: center; width: 100%; height: 80%;">
-        <button class="nav-btn prev" onclick="changePhoto(-1)">&#10094;</button>
-        <img id="viewer-img" src="" style="max-width: 85%; max-height: 100%; border: 2px solid white;">
-        <button class="nav-btn next" onclick="changePhoto(1)">&#10095;</button>
+<!-- Окно просмотра фото -->
+<div id="photo-viewer" style="display:none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 5000; flex-direction: column; align-items: center; justify-content: center;">
+    
+    <!-- Кнопка закрытия (Крестик) -->
+    <span class="close-viewer" onclick="closeViewer()" style="position: absolute; top: 20px; right: 30px; color: white; font-size: 50px; cursor: pointer; z-index: 5001; font-family: Arial;">&times;</span>
+    
+    <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 70%;">
+        <button class="nav-btn prev" onclick="changePhoto(-1)" style="left: 10px;">&#10094;</button>
+        <img id="viewer-img" src="" style="max-width: 90%; max-height: 100%; border: 3px solid white; object-fit: contain;">
+        <button class="nav-btn next" onclick="changePhoto(1)" style="right: 10px;">&#10095;</button>
     </div>
     
-    <!-- Кнопка "Сделать фоном" -->
-    <button onclick="setAsWallpaper()" style="margin-top: 20px; padding: 10px 20px; background: #388038; color: white; border: 2px solid white; cursor: pointer; font-family: 'Tahoma', sans-serif; font-weight: bold; box-shadow: 0 0 10px rgba(0,255,0,0.5);">
-        УСТАНОВИТЬ КАК ОБОИ (SET AS WALLPAPER)
+    <button onclick="setAsWallpaper()" style="margin-top: 30px; padding: 12px 24px; background: #388038; color: white; border: 2px solid white; cursor: pointer; font-family: 'Tahoma', sans-serif; font-weight: bold; z-index: 5001;">
+        УСТАНОВИТЬ КАК ОБОИ
     </button>
 </div>
+
 
 
 
