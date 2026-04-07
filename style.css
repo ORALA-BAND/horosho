@@ -186,3 +186,21 @@ audio { width: 100%; filter: invert(1) hue-rotate(270deg); height: 35px; margin:
     z-index: 5002; /* Кнопки навигации выше всего */
 }
 
+#bsod {
+    position: fixed;
+    inset: 0;
+    background: #0000aa;
+    color: white;
+    font-family: 'Lucida Console', Monaco, monospace;
+    padding: 50px;
+    z-index: 9999;
+    font-size: 18px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+.bsod-content { max-width: 800px; margin: 0 auto; }
+.hint-text { color: #ffff00; font-weight: bold; } /* Желтая подсказка */
+
+@media (max-width: 600px) {
+    #bsod { font-size: 12px; padding: 20px; }
+}
