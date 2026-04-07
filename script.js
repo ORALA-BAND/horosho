@@ -19,7 +19,28 @@ function updateTime() {
 // 3. Открытие папок
 const folderContent = {
     'my-computer': '<h3>Донаты</h3><p><a href="#">Россия (СБП)</a></p><p><a href="#">International (PayPal)</a></p>',
-    'player': '<h3>Музыкальный плеер</h3><p>Тут будет твой плеер...</p><a href="ССЫЛКА_НА_ГУГЛ_ДРАЙВ">Скачать альбом</a>',
+    'player': `
+    <div class="xp-player-container" style="display: flex; flex-direction: column; gap: 10px;">
+        <!-- Обложка и инфо -->
+        <div style="display: flex; gap: 15px; align-items: center; background: #fff; padding: 10px; border: 1px inset #808080;">
+            <img src="assets/album-cover.jpg" id="current-cover" style="width: 80px; height: 80px; border: 1px solid #000; object-fit: cover;">
+            <div>
+                <strong id="track-title" style="font-size: 14px;">Выберите трек</strong>
+                <p style="font-size: 11px; margin: 5px 0;">Альбом: Название Альбома</p>
+                <audio id="main-audio" controls style="height: 30px; width: 180px;"></audio>
+            </div>
+        </div>
+
+        <!-- Список треков -->
+        <div class="playlist" style="background: #fff; border: 1px inset #808080; height: 120px; overflow-y: auto; font-size: 12px;">
+            <div class="track-item" onclick="playTrack('track1.mp3', '01. Интро')" style="padding: 5px; cursor: pointer; border-bottom: 1px solid #eee;">01. Интро</div>
+            <div class="track-item" onclick="playTrack('track2.mp3', '02. Название трека 2')" style="padding: 5px; cursor: pointer; border-bottom: 1px solid #eee;">02. Название трека 2</div>
+            <div class="track-item" onclick="playTrack('track3.mp3', '03. Название трека 3')" style="padding: 5px; cursor: pointer; border-bottom: 1px solid #eee;">03. Название трека 3</div>
+        </div>
+
+        <a href="ТВОЯ_ССЫЛКА_ГУГЛ_ДРАЙВ" target="_blank" style="text-align: center; color: blue; font-size: 11px;">Скачать альбом на Google Drive</a>
+    </div>`
+
     'secret': '<p>Введите пароль:</p><input type="password" id="pass"><button onclick="checkPass()">OK</button>',
     'trash': '<h3>Мерч (Корзина)</h3><p>Фото твоих футболок тут.</p>'
 };
