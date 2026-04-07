@@ -12,9 +12,9 @@ body, html {
     overflow: hidden; /* Чтобы не было прокрутки браузера */
 }
 
-/* Обои «Безмятежность» */
 .desktop {
-    background: #0080ff url('https://imgur.com') no-repeat center center;
+    /* Прямая ссылка на оригинальный холм Bliss */
+    background: #0080ff url('https://wikimedia.org') no-repeat center center;
     background-size: cover;
     height: calc(100vh - 30px);
     display: flex;
@@ -23,6 +23,7 @@ body, html {
     align-content: flex-start;
     padding: 10px;
 }
+
 
 /* Иконки на рабочем столе */
 .icon {
