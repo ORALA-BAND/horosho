@@ -31,6 +31,20 @@ audio { width: 100%; filter: invert(1) hue-rotate(270deg); height: 35px; margin:
 .tr-item { padding: 10px; font-size: 13px; border-bottom: 1px solid #333; cursor: pointer; text-align: left; }
 .tr-item:hover { background: #ff00ff; color: white; }
 
+/* Исправляем фон: когда окно в режиме плеера, всё окно внутри синеет */
+.window.player-mode { 
+    background: #000033 !important; /* Темно-синий фон самого окна */
+    border-color: #ff00ff; 
+    box-shadow: 0 0 20px #ff00ff;
+}
+
+/* Убираем белый фон у контента, когда открыт плеер */
+.window.player-mode #player-container {
+    background: #000033;
+    color: #ff00ff;
+}
+
+
 /* Панель задач */
 .taskbar { height: 30px; background: linear-gradient(to bottom, #245edb, #1941a5); position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; z-index: 200; }
 .start-button { background: linear-gradient(to bottom, #388038, #62b362); color: white; padding: 0 15px; height: 100%; display: flex; align-items: center; border-radius: 0 10px 10px 0; font-weight: bold; cursor: pointer; }
