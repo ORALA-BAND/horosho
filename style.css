@@ -13,9 +13,11 @@ body, html {
 }
 
 .desktop {
-    /* Прямая ссылка на оригинальный холм Bliss */
-    background: #0080ff url('https://wikimedia.org') no-repeat center center;
-    background-size: cover;
+    background-color: #0080ff; /* Цвет на случай, если картинка не загрузится */
+    background-image: url('https://wikimedia.org') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
     height: calc(100vh - 30px);
     display: flex;
     flex-direction: column;
