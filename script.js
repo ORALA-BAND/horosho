@@ -42,11 +42,8 @@ const folderContent = {
                 <span style="font-weight:bold; margin-left:10px;">PayPal (International)</span>
                 <br><br>
                 <!-- Твой QR-код -->
-                <img src="assets/paypal-qr.png" style="width:150px; height:150px; border:1px solid #ccc; display:block; margin: 0 auto;">
+                <img src="assets/paypal-qr.jpg" style="width:150px; height:150px; border:1px solid #ccc; display:block; margin: 0 auto;">
                 <br>
-                <button onclick="window.open('ТВОЯ_ССЫЛКА_PAYPAL')" style="cursor:pointer; padding:5px 10px; margin-top:5px;">
-                    DONATE
-                </button>
             </div>
 
             <!-- Блок СБП (Россия) -->
