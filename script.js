@@ -75,3 +75,18 @@ function setWallpaper(imgUrl) {
     alert("Обои рабочего стола успешно изменены!");
 }
 
+function playTrack(fileName, title) {
+    const audio = document.getElementById('main-audio');
+    const titleDisplay = document.getElementById('track-title');
+    
+    audio.src = 'assets/' + fileName;
+    titleDisplay.innerText = title;
+    audio.play();
+    
+    // Подсветка активного трека (опционально)
+    const tracks = document.querySelectorAll('.track-item');
+    tracks.forEach(t => t.style.background = 'white');
+    event.target.style.background = '#316ac5';
+    event.target.style.color = 'white';
+}
+
