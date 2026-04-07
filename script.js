@@ -61,14 +61,12 @@ const folderContent = {
             <!-- Соцсети -->
             <div style="display: flex; justify-content: center; gap: 30px;">
                 <!-- VK -->
-                <div onclick="window.open('ТВОЯ_ССЫЛКА_VK')" style="cursor:pointer; text-align:center;">
-                    <img src="assets/logo.png" width="32"> 
+                <div onclick="window.open('https://vk.com/orala_band')" style="cursor:pointer; text-align:center;">
                     <p style="font-size: 11px; color: blue; text-decoration: underline; margin-top: 5px;">VK</p>
                 </div>
 
                 <!-- YouTube -->
                 <div onclick="window.open('ТВОЯ_ССЫЛКА_YOUTUBE')" style="cursor:pointer; text-align:center;">
-                    <img src="assets/logo.png" width="32">
                     <p style="font-size: 11px; color: blue; text-decoration: underline; margin-top: 5px;">YouTube</p>
                 </div>
             </div>
