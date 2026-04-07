@@ -1,7 +1,8 @@
 let currentTrackIndex = 0;
+let currentPhotoIdx = 1;
 
 window.onload = () => {
-    // 1. Убираем экран загрузки через 3 секунды
+    // 1. Убираем экран загрузки
     setTimeout(() => {
         const boot = document.getElementById('boot-screen');
         if(boot) boot.style.display = 'none';
@@ -9,17 +10,15 @@ window.onload = () => {
         if(snd) snd.play().catch(() => {});
     }, 3000);
 
-    // 2. Инициализируем плеер
+    // 2. Плеер
     const audio = document.getElementById('main-audio');
     const tracks = document.querySelectorAll('#actual-playlist .tr-item');
 
-    // Автопереключение на следующий трек
     audio.onended = () => {
         currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
         playTrackByIndex(currentTrackIndex);
     };
 
-    // Вешаем событие клика на каждый из 10 треков
     tracks.forEach((item, index) => {
         item.onclick = () => {
             currentTrackIndex = index;
@@ -27,58 +26,32 @@ window.onload = () => {
         };
     });
 
-    // Запускаем часы
     setInterval(updateTime, 1000);
     updateTime();
 };
 
-// Функция воспроизведения
-function playTrackByIndex(index) {
-    const tracks = document.querySelectorAll('#actual-playlist .tr-item');
-    const audio = document.getElementById('main-audio');
-    const title = document.getElementById('track-title');
-    
-    const selected = tracks[index];
-    if (!selected) return;
-
-    audio.src = 'assets/' + selected.getAttribute('data-src');
-    title.innerText = selected.getAttribute('data-title');
-    audio.play();
-
-    // Красивая подсветка активного трека
-    tracks.forEach(t => {
-        t.style.background = "transparent";
-        t.style.color = "#ff00ff";
-    });
-    selected.style.background = "#ff00ff";
-    selected.style.color = "white";
-}
-
-// Контент для остальных папок
+// Контент папок
 const folderContent = {
     'my-computer': `
         <div style="color:black; font-size:14px; padding:10px;">
             <p>Система: ORALA XP Music Edition</p>
-            <p style="margin:15px 0;"><strong>ПОДДЕРЖКА ПРОЕКТА:</strong></p>
-            <p onclick="window.open('ССЫЛКА_РФ')" style="cursor:pointer; color:blue; text-decoration:underline;">> Донат Россия (СБП)</p>
-            <p onclick="window.open('ССЫЛКА_ИНТ')" style="cursor:pointer; color:blue; text-decoration:underline; margin-top:10px;">> Support International (PayPal)</p>
+            <p onclick="window.open('ССЫЛКА_РФ')" style="cursor:pointer; color:blue; text-decoration:underline; margin-top:15px;">> Донат Россия (СБП)</p>
+            <p onclick="window.open('ССЫЛКА_ИНТ')" style="cursor:pointer; color:blue; text-decoration:underline; margin-top:10px;">> PayPal (Global)</p>
         </div>`,
-    // Внутри folderContent:
+    
     'secret': `
         <div id="lock" style="text-align:center; color:black; padding:10px;">
-            <p>ДОСТУП ЗАБЛОКИРОВАН</p>
-            <input type="password" id="psw" style="margin:10px 0; width:100px; border:1px solid #7f9db9;">
-            <br><button onclick="checkPass()" style="cursor:pointer; padding:2px 10px;">ВВОД</button>
+            <p>PASSWORD:</p>
+            <input type="password" id="psw" style="width:100px; margin-bottom:10px;">
+            <br><button onclick="checkPass()">ВВОД</button>
         </div>
-        <div id="sec-files" style="display:none; text-align:center; padding:10px;">
-            <img src="assets/secret1.jpg" onclick="document.querySelector('.desktop').style.background='url(assets/secret1.jpg) center/cover'" style="width:100%; border:1px solid #000; cursor:pointer;">
-            <p style="font-size:10px; color:black; margin-top:5px;">Кликни, чтобы сменить фон</p>
+        <div id="sec-files" style="display:none; height: 250px; overflow-y: auto;">
+            <div class="photo-grid" id="gallery-root"></div>
         </div>`,
-    'trash': `<div style="text-align:center; color:#888; padding:30px; font-size:12px;">КОРЗИНА ПУСТА (МЕРЧ СКОРО)</div>`
+        
+    'trash': `<div style="text-align:center; color:#888; padding:30px;">КОРЗИНА ПУСТА</div>`
 };
 
-
-// Логика открытия папок
 function openFolder(id) {
     const win = document.getElementById('window-template');
     const body = document.getElementById('window-body');
@@ -93,27 +66,66 @@ function openFolder(id) {
         player.style.display = 'none';
         body.style.display = 'block';
         body.innerHTML = folderContent[id];
+        
+        // Если открыли секретную папку после ввода пароля — рисуем сетку
+        if (id === 'secret' && document.getElementById('sec-files').style.display === 'block') {
+            renderGallery();
+        }
     }
-
-    document.querySelector('.window-title').innerText = id.toUpperCase().replace('-', ' ');
+    document.querySelector('.window-title').innerText = id.toUpperCase();
     win.style.display = 'block';
 }
 
-function closeWindow() {
-    document.getElementById('window-template').style.display = 'none';
-}
-
-function updateTime() {
-    const now = new Date();
-    const clock = document.getElementById('clock');
-    if(clock) clock.innerText = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
+// Генерация 24 фото
+function renderGallery() {
+    let html = '';
+    for (let i = 1; i <= 24; i++) {
+        html += `<img src="assets/${i}.jpg" class="secret-thumb" onclick="openViewer(${i})">`;
+    }
+    document.getElementById('gallery-root').innerHTML = html;
 }
 
 function checkPass() {
     if(document.getElementById('psw').value === '1234') {
         document.getElementById('lock').style.display = 'none';
         document.getElementById('sec-files').style.display = 'block';
-    } else { 
-        alert('ОШИБКА ДОСТУПА'); 
-    }
+        renderGallery();
+    } else { alert('DENIED'); }
+}
+
+// Функции просмотра фото
+function openViewer(n) {
+    currentPhotoIdx = n;
+    document.getElementById('photo-viewer').style.display = 'flex';
+    document.getElementById('viewer-img').src = 'assets/' + n + '.jpg';
+}
+
+function closeViewer() {
+    document.getElementById('photo-viewer').style.display = 'none';
+}
+
+function changePhoto(step) {
+    currentPhotoIdx += step;
+    if (currentPhotoIdx > 24) currentPhotoIdx = 1;
+    if (currentPhotoIdx < 1) currentPhotoIdx = 24;
+    document.getElementById('viewer-img').src = 'assets/' + currentPhotoIdx + '.jpg';
+}
+
+// Плеер и Время
+function playTrackByIndex(index) {
+    const tracks = document.querySelectorAll('#actual-playlist .tr-item');
+    const audio = document.getElementById('main-audio');
+    const title = document.getElementById('track-title');
+    audio.src = 'assets/' + tracks[index].getAttribute('data-src');
+    title.innerText = tracks[index].getAttribute('data-title');
+    audio.play();
+    tracks.forEach(t => { t.style.background = "transparent"; t.style.color = "#ff00ff"; });
+    tracks[index].style.background = "#ff00ff";
+    tracks[index].style.color = "white";
+}
+
+function closeWindow() { document.getElementById('window-template').style.display = 'none'; }
+function updateTime() {
+    const now = new Date();
+    document.getElementById('clock').innerText = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
 }
