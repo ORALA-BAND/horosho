@@ -174,3 +174,15 @@ audio { width: 100%; filter: invert(1) hue-rotate(270deg); height: 35px; margin:
 .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; font-size: 50px; cursor: pointer; padding: 20px; }
 .prev { left: 10px; }
 .next { right: 10px; }
+
+.close-viewer {
+    line-height: 1;
+    user-select: none;
+}
+.close-viewer:hover {
+    color: #ff00ff; /* Станет розовым при наведении */
+}
+.nav-btn {
+    z-index: 5002; /* Кнопки навигации выше всего */
+}
+
