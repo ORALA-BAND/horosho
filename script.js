@@ -46,3 +46,11 @@ function checkPass() {
         alert('Неверный пароль!');
     }
 }
+
+function setWallpaper(imgUrl) {
+    const desktop = document.querySelector('.desktop');
+    desktop.style.backgroundImage = `url(${imgUrl})`;
+    // Добавляем уведомление как в Windows
+    alert("Обои рабочего стола успешно изменены!");
+}
+
