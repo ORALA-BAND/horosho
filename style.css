@@ -129,3 +129,49 @@ body, html {
     from { left: -30px; }
     to { left: 150px; }
 }
+
+.window {
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    width: 400px;
+    background: #ece9d8; /* Классический серый XP */
+    border: 3px solid #0053ee;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+    z-index: 50;
+}
+
+.window-header {
+    background: linear-gradient(to bottom, #0058e6 0%, #2576ff 10%, #0058e6 100%);
+    padding: 3px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    cursor: move;
+}
+
+.win-btn {
+    width: 21px;
+    height: 21px;
+    background: #3d95ff;
+    border: 1px solid #fff;
+    color: white;
+    font-size: 10px;
+    margin-left: 2px;
+    cursor: pointer;
+    box-shadow: inset -1px -1px 1px #000;
+}
+
+.close-btn { background: #e04343; } /* Красная кнопка закрытия */
+
+.window-content {
+    padding: 20px;
+    height: 250px;
+    overflow-y: auto;
+    color: black;
+}
+
