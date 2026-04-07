@@ -41,5 +41,21 @@
 
     <audio id="startup-sound" src="assets/startup.mp3"></audio>
     <script src="script.js"></script>
+
+    <!-- Шаблон окна (по умолчанию скрыт) -->
+<div id="window-template" class="window" style="display: none;">
+    <div class="window-header">
+        <span class="window-title">Папка</span>
+        <div class="window-controls">
+            <button class="win-btn">_</button>
+            <button class="win-btn">[ ]</button>
+            <button class="win-btn close-btn" onclick="closeWindow()">X</button>
+        </div>
+    </div>
+    <div class="window-content" id="window-body">
+        <!-- Сюда JS будет вставлять содержимое -->
+    </div>
+</div>
+
 </body>
 </html>
