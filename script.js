@@ -79,7 +79,7 @@ function openFolder(id) {
 // Генерация 24 фото
 function renderGallery() {
     let html = '';
-    for (let i = 1; i <= 24; i++) {
+    for (let i = 1; i <= 35; i++) {
         html += `<img src="assets/${i}.jpg" class="secret-thumb" onclick="openViewer(${i})">`;
     }
     document.getElementById('gallery-root').innerHTML = html;
