@@ -49,32 +49,31 @@ const folderContent = {
             <div class="photo-grid" id="gallery-root"></div>
         </div>`,
         
-        'trash': `
-        <div style="color:black; padding:10px; font-family: 'Tahoma', sans-serif;">
-            <!-- Текст про мерч -->
-            <div style="background: #fff; border: 1px inset #808080; padding: 10px; margin-bottom: 20px; text-align: center;">
-                <img src="https://alexmeub.com" width="32" style="margin-bottom: 10px;">
+            'trash': `
+        <div style="color:black; padding:15px; font-family: 'Tahoma', sans-serif;">
+            <!-- Блок про мерч -->
+            <div style="text-align: center; margin-bottom: 25px;">
+                <img src="assets/trash.png" width="48" style="margin-bottom: 10px;">
                 <p style="margin: 0; font-weight: bold;">В корзине пока пусто...</p>
-                <p style="margin: 5px 0 0 0; font-size: 11px; color: #555;">Новый мерч ORALA появится здесь совсем скоро!</p>
+                <p style="margin: 5px 0 0 0; font-size: 11px; color: #666;">Новый мерч появится здесь совсем скоро!</p>
             </div>
 
-            <!-- Ссылки на соцсети -->
-            <p style="font-weight: bold; margin-bottom: 10px; font-size: 12px;">МЫ В СЕТИ:</p>
-            
-            <div style="display: flex; gap: 20px; align-items: center;">
+            <!-- Соцсети -->
+            <div style="display: flex; justify-content: center; gap: 30px;">
                 <!-- VK -->
-                <div onclick="window.open('ТВОЯ_ССЫЛКА_VK')" style="cursor:pointer; text-align:center; width:60px;">
-                    <img src="https://alexmeub.com" width="32">
-                    <p style="font-size: 10px; color: blue; text-decoration: underline; margin-top: 5px;">VK</p>
+                <div onclick="window.open('ТВОЯ_ССЫЛКА_VK')" style="cursor:pointer; text-align:center;">
+                    <img src="assets/logo.png" width="32"> 
+                    <p style="font-size: 11px; color: blue; text-decoration: underline; margin-top: 5px;">VK</p>
                 </div>
 
                 <!-- YouTube -->
-                <div onclick="window.open('ТВОЯ_ССЫЛКА_YOUTUBE')" style="cursor:pointer; text-align:center; width:60px;">
-                    <img src="https://alexmeub.com" width="32">
-                    <p style="font-size: 10px; color: blue; text-decoration: underline; margin-top: 5px;">YouTube</p>
+                <div onclick="window.open('ТВОЯ_ССЫЛКА_YOUTUBE')" style="cursor:pointer; text-align:center;">
+                    <img src="assets/logo.png" width="32">
+                    <p style="font-size: 11px; color: blue; text-decoration: underline; margin-top: 5px;">YouTube</p>
                 </div>
             </div>
         </div>`,
+
 
 };
 
