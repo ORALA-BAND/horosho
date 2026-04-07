@@ -111,8 +111,8 @@ function closeViewer() {
 
 function changePhoto(step) {
     currentPhotoIdx += step;
-    if (currentPhotoIdx > 24) currentPhotoIdx = 1;
-    if (currentPhotoIdx < 1) currentPhotoIdx = 24;
+    if (currentPhotoIdx > 35) currentPhotoIdx = 1;
+    if (currentPhotoIdx < 1) currentPhotoIdx = 35;
     document.getElementById('viewer-img').src = 'assets/' + currentPhotoIdx + '.jpg';
 }
 
