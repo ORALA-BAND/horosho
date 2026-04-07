@@ -54,7 +54,7 @@ const folderContent = {
                 <img src="" width="32" style="vertical-align:middle;">
                 <span style="font-weight:bold; margin-left:10px;">Донат (Россия / СБП)</span>
                 <br><br>
-                <button onclick="window.open('ТВОЯ_ССЫЛКА_СБП')" style="cursor:pointer; padding:8px 15px; font-weight:bold; border:2px solid #388038;">
+                <button onclick="window.open('https://messenger.online.sberbank.ru/sl/kTP9APlvDeHVsot93')" style="cursor:pointer; padding:8px 15px; font-weight:bold; border:2px solid #388038;">
                     ПОДДЕРЖАТЬ ЧЕРЕЗ СБОР ДЕНЕГ В СБЕР
                 </button>
             </div>
