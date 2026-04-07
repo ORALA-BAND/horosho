@@ -108,12 +108,25 @@ function renderGallery() {
     document.getElementById('gallery-root').innerHTML = html;
 }
 
+// Находим кнопку Пуск и вешаем событие
+document.querySelector('.start-button').onclick = () => {
+    document.getElementById('bsod').style.display = 'block';
+};
+
+// Скрытие BSOD при клике
+document.getElementById('bsod').onclick = () => {
+    document.getElementById('bsod').style.display = 'none';
+};
+
+// ОБНОВИ ПАРОЛЬ в функции checkPass
 function checkPass() {
-    if(document.getElementById('psw').value === '1234') {
+    if(document.getElementById('psw').value === '123456') { // Новый пароль из BSOD
         document.getElementById('lock').style.display = 'none';
         document.getElementById('sec-files').style.display = 'block';
         renderGallery();
-    } else { alert('DENIED'); }
+    } else { 
+        alert('ACCESS DENIED. CHECK THE BSOD HINT.'); 
+    }
 }
 
 // Функции просмотра фото
