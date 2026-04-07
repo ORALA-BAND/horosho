@@ -34,7 +34,8 @@ window.onload = () => {
 const folderContent = {
         'my-computer': `
         <div style="color:black; font-size:13px; padding:10px;">
-            <p><strong>Выберите способ поддержки:</strong></p>
+        <p><strong>System: ORALA XP HOROSHO</p>
+            <p><strong>Поддержи/Support:</strong></p>
             
             <!-- Блок PayPal -->
             <div style="margin-top:15px; background:#fff; border:1px inset #808080; padding:10px; text-align:center;">
