@@ -25,14 +25,24 @@ const folderContent = {
         <div class="synth-player">
             <img src="assets/album-cover.jpg" class="main-cover">
             <div id="track-title" class="neon-text">ВЫБЕРИТЕ ТРЕК</div>
-            <audio id="main-audio" controls></audio>
+            
+            <!-- Плеер без кнопок скачивания и скорости -->
+            <audio id="main-audio" controls controlsList="nodownload noplaybackrate"></audio>
+            
             <div style="margin-top:10px; max-height:120px; overflow-y:auto; background:rgba(0,0,0,0.4);">
                 <div class="tr-item" onclick="playTrack('track1.mp3', '01. Intro')">01. Intro</div>
                 <div class="tr-item" onclick="playTrack('track2.mp3', '02. Midnight City')">02. Midnight City</div>
                 <div class="tr-item" onclick="playTrack('track3.mp3', '03. Neon Dreams')">03. Neon Dreams</div>
             </div>
-            <p onclick="window.open('ССЫЛКА_ДИСК')" style="font-size:11px; margin-top:15px; cursor:pointer; color:#ff00ff; text-decoration:underline;">СКАЧАТЬ АЛЬБОМ (ZIP)</p>
+
+            <!-- Ссылка под треками -->
+            <div style="margin-top:15px; padding-bottom:10px;">
+                <a href="ССЫЛКА_НА_ГУГЛ_ДИСК" target="_blank" style="color:#ff00ff; font-size:12px; text-decoration:underline; font-weight:bold;">
+                    СКАЧАТЬ АЛЬБОМ / DOWNLOAD ALBUM
+                </a>
+            </div>
         </div>`,
+
 
     'secret': `
         <div id="lock" style="text-align:center; color:black;">
