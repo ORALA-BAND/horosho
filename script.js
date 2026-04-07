@@ -55,7 +55,7 @@ const folderContent = {
             <div style="text-align: center; margin-bottom: 25px;">
                 <img src="assets/trash.png" width="48" style="margin-bottom: 10px;">
                 <p style="margin: 0; font-weight: bold;">В корзине пока пусто...</p>
-                <p style="margin: 5px 0 0 0; font-size: 11px; color: #666;">Новый мерч появится здесь совсем скоро!</p>
+                <p style="margin: 5px 0 0 0; font-size: 11px; color: #666;">мерч появится здесь, если хотите</p>
             </div>
 
             <!-- Соцсети -->
