@@ -26,11 +26,17 @@ body, html { margin: 0; padding: 0; height: 100%; font-family: "Tahoma", sans-se
 
 
 .desktop { 
-    background: #0080ff; /* Синий фон */
+    background-color: #0080ff; /* Это цвет по умолчанию */
+    background-image: none; /* Или твоя стандартная картинка без !important */
     height: calc(100dvh - 30px); 
     width: 100%;
-    display: flex; flex-direction: column; flex-wrap: wrap; align-content: flex-start; padding: 15px; 
+    display: flex; 
+    flex-direction: column; 
+    flex-wrap: wrap; 
+    align-content: flex-start; 
+    padding: 15px; 
 }
+
 
 .icon { width: 85px; height: 90px; display: flex; flex-direction: column; align-items: center; color: white; text-shadow: 1px 1px 2px black; font-size: 12px; margin-bottom: 15px; cursor: pointer; text-align: center; }
 .icon img { width: 42px; height: 42px; margin-bottom: 5px; }
