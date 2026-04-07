@@ -85,7 +85,7 @@ const folderContent = {
                 </div>
 
                 <!-- YouTube -->
-                <div onclick="window.open('ТВОЯ_ССЫЛКА_YOUTUBE')" style="cursor:pointer; text-align:center;">
+                <div onclick="window.open('https://youtube.com/@oralaband?si=riNjvN-aoT2pQq-I')" style="cursor:pointer; text-align:center;">
                     <p style="font-size: 11px; color: blue; text-decoration: underline; margin-top: 5px;">YouTube</p>
                 </div>
             </div>
