@@ -2,52 +2,45 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XP Music Album</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Экран загрузки -->
     <div id="boot-screen">
         <div style="color:white; font-family:sans-serif; text-align:center;">
-            <h1 style="margin-bottom:10px;">WINDOWS XP</h1>
+            <h1>WINDOWS XP</h1>
             <div class="progress-bar"><span></span></div>
         </div>
     </div>
 
-    <!-- Рабочий стол -->
     <main class="desktop">
+        <!-- Иконки строго из твоей папки assets -->
         <div class="icon" onclick="openFolder('my-computer')">
-            <img src="https://alexmeub.com">
+            <img src="assets/computer.png">
             <span>Мой компьютер</span>
         </div>
         <div class="icon" onclick="openFolder('player')">
-            <img src="https://alexmeub.com">
+            <img src="assets/player.png">
             <span>Плеер</span>
         </div>
         <div class="icon" onclick="openFolder('secret')">
-            <img src="https://alexmeub.com">
+            <img src="assets/folder.png">
             <span>Секретно</span>
         </div>
         <div class="icon" onclick="openFolder('trash')">
-            <img src="https://alexmeub.com">
+            <img src="assets/trash.png">
             <span>Корзина</span>
         </div>
 
-        <!-- Окно (одно на всех) -->
         <div id="window-template" class="window" style="display: none;">
             <div class="window-header">
                 <span class="window-title">Папка</span>
-                <div class="window-controls">
-                    <button class="win-btn close-btn" onclick="closeWindow()">X</button>
-                </div>
+                <button class="close-btn" onclick="closeWindow()">X</button>
             </div>
             <div class="window-content" id="window-body"></div>
         </div>
     </main>
 
-    <!-- Панель задач -->
     <footer class="taskbar">
         <div class="start-button">Пуск</div>
         <div class="time" id="clock">00:00</div>
