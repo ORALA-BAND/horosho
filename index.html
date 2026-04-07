@@ -2,10 +2,13 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <!-- Фикс масштаба для мобилок (запрет зума и мелкого текста) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>XP Music Album</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Загрузка -->
     <div id="boot-screen">
         <div style="color:white; font-family:sans-serif; text-align:center;">
             <h1>WINDOWS XP</h1>
@@ -13,8 +16,8 @@
         </div>
     </div>
 
+    <!-- Рабочий стол -->
     <main class="desktop">
-        <!-- Иконки строго из твоей папки assets -->
         <div class="icon" onclick="openFolder('my-computer')">
             <img src="assets/computer.png">
             <span>Мой компьютер</span>
@@ -32,6 +35,7 @@
             <span>Корзина</span>
         </div>
 
+        <!-- Единое окно -->
         <div id="window-template" class="window" style="display: none;">
             <div class="window-header">
                 <span class="window-title">Папка</span>
@@ -41,6 +45,7 @@
         </div>
     </main>
 
+    <!-- Панель задач -->
     <footer class="taskbar">
         <div class="start-button">Пуск</div>
         <div class="time" id="clock">00:00</div>
