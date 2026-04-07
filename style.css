@@ -178,3 +178,11 @@ body, html {
     color: black;
 }
 
+.track-item:hover {
+    background-color: #e5f1fb;
+    color: black;
+}
+.track-item {
+    transition: background 0.2s;
+    color: #333;
+}
