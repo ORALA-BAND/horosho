@@ -68,6 +68,15 @@ audio { width: 100%; filter: invert(1) hue-rotate(270deg); height: 35px; margin:
     color: #ff00ff;
 }
 
+.playlist-container {
+    margin-top: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    height: 140px; /* Высота примерно на 4-5 треков, остальное — скролл */
+    overflow-y: auto;
+    border: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+
 
 /* Панель задач */
 .taskbar { height: 30px; background: linear-gradient(to bottom, #245edb, #1941a5); position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; z-index: 200; }
