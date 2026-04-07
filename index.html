@@ -118,10 +118,13 @@
 </body>
 </html>
 
-<!-- Синий экран смерти -->
 <div id="bsod" style="display:none;">
+    <!-- Кнопка закрытия -->
+    <span onclick="this.parentElement.style.display='none'" style="position: absolute; top: 10px; right: 20px; color: white; font-size: 40px; cursor: pointer; font-family: Arial; font-weight: bold;">&times;</span>
+    
     <div class="bsod-content">
-        <p>A problema has been detected and ORALA XP has been shut down to prevent damage to your brain.</p>
+        <!-- Твой текст ошибки... -->
+         <p>A problema has been detected and ORALA XP has been shut down to prevent damage to your brain.</p>
         <p>Была обнаружена ошибка, и ORALA XP была остановлена, чтобы предотвратить повреждение вашего мозга.</p>
         <p>THE_ALBUM_ХОРОШО_HOROSHO_IS_TOO_HOT</p>
         <p>*** STOP: 0x000000ED (0x00000001, 0x00000012, 0x00000034, 0x00000056)</p>
@@ -129,11 +132,6 @@
         <p class="hint-text">oh: It's the key to the secret door.</p>
         <p class="hint-text">oх: Это ключ к секретной двери.</p>
         <br>
-        <p>НажмиPress кудаany угодноkey to вернисьreturn вto реальностьreality (илиor простоjust кликниclick куда-тоanywhere)...</p>
     </div>
 </div>
-<div id="bsod" style="display:none;" onclick="closeBsod()">
-    <!-- Весь контент внутри -->
-</div>
-
 
