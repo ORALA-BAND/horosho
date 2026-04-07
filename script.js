@@ -30,9 +30,9 @@ const folderContent = {
             <audio id="main-audio" controls controlsList="nodownload noplaybackrate"></audio>
             
             <div style="margin-top:10px; max-height:120px; overflow-y:auto; background:rgba(0,0,0,0.4);">
-                <div class="tr-item" onclick="playTrack('track1.mp3', '01. Intro')">01. Intro</div>
-                <div class="tr-item" onclick="playTrack('track2.mp3', '02. Midnight City')">02. Midnight City</div>
-                <div class="tr-item" onclick="playTrack('track3.mp3', '03. Neon Dreams')">03. Neon Dreams</div>
+                <div class="tr-item" onclick="playTrack('track1.mp3', '01. ХОРОШО')">01. Intro</div>
+                <div class="tr-item" onclick="playTrack('track2.mp3', '02. ЛУЖА ФАНТАЗИЙ')">02. Midnight City</div>
+                <div class="tr-item" onclick="playTrack('track3.mp3', '03. Я ДУМАЛА, Я СЕКСИ')">03. Neon Dreams</div>
             </div>
 
             <!-- Ссылка под треками -->
