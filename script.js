@@ -21,27 +21,36 @@ const folderContent = {
             <p onclick="window.open('ССЫЛКА_ИНТ')" style="cursor:pointer; color:blue; text-decoration:underline;">> Support (PayPal/Global)</p>
         </div>`,
     
-    'player': `
+       'player': `
         <div class="synth-player">
-            <img src="assets/album-cover.jpg" class="main-cover">
-            <div id="track-title" class="neon-text">ВЫБЕРИТЕ ТРЕК</div>
-            
-            <!-- Плеер без кнопок скачивания и скорости -->
-            <audio id="main-audio" controls controlsList="nodownload noplaybackrate"></audio>
-            
-            <div style="margin-top:10px; max-height:120px; overflow-y:auto; background:rgba(0,0,0,0.4);">
-                <div class="tr-item" onclick="playTrack('track1.mp3', '01. ХОРОШО')">01. ХОРОШО</div>
-                <div class="tr-item" onclick="playTrack('track2.mp3', '02. ЛУЖА ФАНТАЗИЙ')">02. ЛУЖА ФАНТАЗИЙ</div>
-                <div class="tr-item" onclick="playTrack('track3.mp3', '03. Я ДУМАЛА, Я СЕКСИ')">03. Я ДУМАЛА, Я СЕКСИ</div>
+            <!-- 3D Обложка -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/album-cover.jpg" class="main-cover">
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="assets/album-back.jpg" class="main-cover">
+                    </div>
+                </div>
             </div>
 
-            <!-- Ссылка под треками -->
+            <div id="track-title" class="neon-text" style="margin-top:15px;">ВЫБЕРИТЕ ТРЕК</div>
+            <audio id="main-audio" controls controlsList="nodownload noplaybackrate"></audio>
+            
+            <div style="margin-top:10px; max-height:100px; overflow-y:auto; background:rgba(0,0,0,0.4);">
+                <div class="tr-item" onclick="playTrack('track1.mp3', '01. Intro')">01. ХОРОШО</div>
+                <div class="tr-item" onclick="playTrack('track2.mp3', '02. Midnight City')">02. ЛУЖА ФАНТАЗИЙ</div>
+                <div class="tr-item" onclick="playTrack('track3.mp3', '03. Neon Dreams')">03. Я ДУМАЛА, Я СЕКСИ</div>
+            </div>
+
             <div style="margin-top:15px; padding-bottom:10px;">
-                <a href="ССЫЛКА_НА_ГУГЛ_ДИСК" target="_blank" style="color:#ff00ff; font-size:12px; text-decoration:underline; font-weight:bold;">
+                <a href="ТВОЯ_ССЫЛКА" target="_blank" style="color:#ff00ff; font-size:12px; text-decoration:underline; font-weight:bold;">
                     СКАЧАТЬ АЛЬБОМ / DOWNLOAD ALBUM
                 </a>
             </div>
         </div>`,
+
 
 
     'secret': `
