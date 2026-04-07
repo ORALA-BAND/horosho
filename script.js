@@ -39,7 +39,6 @@ const folderContent = {
             
             <!-- Блок PayPal -->
             <div style="margin-top:15px; background:#fff; border:1px inset #808080; padding:10px; text-align:center;">
-                <img src="assets/paypal-qr.jpg" width="32" style="vertical-align:middle;">
                 <span style="font-weight:bold; margin-left:10px;">PayPal (International)</span>
                 <br><br>
                 <!-- Твой QR-код -->
