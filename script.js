@@ -1,57 +1,72 @@
-// 1. Убираем экран загрузки через 3 секунды
+// 1. Логика загрузки и часов
 window.onload = () => {
     setTimeout(() => {
-        document.getElementById('boot-screen').style.display = 'none';
-        document.getElementById('startup-sound').play(); // Нужен файл assets/startup.mp3
+        const bootScreen = document.getElementById('boot-screen');
+        if (bootScreen) bootScreen.style.display = 'none';
+        
+        const audio = document.getElementById('startup-sound');
+        if (audio) audio.play().catch(() => console.log("Звук заблокирован"));
     }, 3000);
     
-    updateTime();
     setInterval(updateTime, 1000);
+    updateTime();
 };
 
-// 2. Живые часы
 function updateTime() {
-    const now = new Date();
-    const timeStr = now.getHours() + ":" + now.getMinutes().toString().padStart(2, '0');
-    document.getElementById('clock').innerText = timeStr;
+    const clock = document.getElementById('clock');
+    if (clock) {
+        const now = new Date();
+        clock.innerText = now.getHours() + ":" + now.getMinutes().toString().padStart(2, '0');
+    }
 }
 
-// 3. Открытие папок
+// 2. Контент папок
 const folderContent = {
-    'my-computer': '<h3>Донаты</h3><p><a href="#">Россия (СБП)</a></p><p><a href="#">International (PayPal)</a></p>',
-    'player': `
-    <div class="xp-player-container" style="display: flex; flex-direction: column; gap: 10px;">
-        <!-- Обложка и инфо -->
-        <div style="display: flex; gap: 15px; align-items: center; background: #fff; padding: 10px; border: 1px inset #808080;">
-            <img src="assets/album-cover.jpg" id="current-cover" style="width: 80px; height: 80px; border: 1px solid #000; object-fit: cover;">
-            <div>
-                <strong id="track-title" style="font-size: 14px;">Выберите трек</strong>
-                <p style="font-size: 11px; margin: 5px 0;">Альбом: Название Альбома</p>
-                <audio id="main-audio" controls style="height: 30px; width: 180px;"></audio>
+    'my-computer': `
+        <div style="display:flex; gap:20px; padding:10px;">
+            <div style="text-align:center; width:80px;">
+                <a href="ССЫЛКА_РФ" target="_blank"><img src="https://alexmeub.com" width="32"><br>Донат (РФ)</a>
             </div>
+            <div style="text-align:center; width:80px;">
+                <a href="ССЫЛКА_ИНТ" target="_blank"><img src="https://alexmeub.com" width="32"><br>PayPal</a>
+            </div>
+        </div>`,
+    
+    'player': `
+        <div style="background:#fff; border:1px inset #808080; padding:10px;">
+            <div style="display:flex; gap:10px; margin-bottom:10px;">
+                <img src="assets/album-cover.jpg" style="width:60px; height:60px; border:1px solid #000;">
+                <div>
+                    <b id="track-title" style="font-size:12px;">Выберите трек</b><br>
+                    <audio id="main-audio" controls style="width:180px; height:30px; margin-top:5px;"></audio>
+                </div>
+            </div>
+            <div style="height:100px; overflow-y:auto; border-top:1px solid #ccc; font-size:11px;">
+                <div class="tr-item" onclick="playTrack('track1.mp3', '01. Интро')" style="padding:4px; cursor:pointer;">01. Интро</div>
+                <div class="tr-item" onclick="playTrack('track2.mp3', '02. Трек 2')" style="padding:4px; cursor:pointer;">02. Трек 2</div>
+                <div class="tr-item" onclick="playTrack('track3.mp3', '03. Трек 3')" style="padding:4px; cursor:pointer;">03. Трек 3</div>
+            </div>
+        </div>`,
+
+    'secret': `
+        <div id="lock" style="text-align:center;">
+            <p>Введите пароль:</p>
+            <input type="password" id="pass_input" style="width:80px;">
+            <button onclick="checkPass()">OK</button>
         </div>
+        <div id="secret-files" style="display:none; text-align:center;">
+            <p>Успешно! Кликни, чтобы сменить фон:</p>
+            <img src="assets/secret1.jpg" onclick="document.querySelector('.desktop').style.backgroundImage='url(assets/secret1.jpg)'" style="width:40%; cursor:pointer;">
+        </div>`,
 
-        <!-- Список треков -->
-        <div class="playlist" style="background: #fff; border: 1px inset #808080; height: 120px; overflow-y: auto; font-size: 12px;">
-            <div class="track-item" onclick="playTrack('track1.mp3', '01. Интро')" style="padding: 5px; cursor: pointer; border-bottom: 1px solid #eee;">01. Интро</div>
-            <div class="track-item" onclick="playTrack('track2.mp3', '02. Название трека 2')" style="padding: 5px; cursor: pointer; border-bottom: 1px solid #eee;">02. Название трека 2</div>
-            <div class="track-item" onclick="playTrack('track3.mp3', '03. Название трека 3')" style="padding: 5px; cursor: pointer; border-bottom: 1px solid #eee;">03. Название трека 3</div>
-        </div>
-
-        <a href="ТВОЯ_ССЫЛКА_ГУГЛ_ДРАЙВ" target="_blank" style="text-align: center; color: blue; font-size: 11px;">Скачать альбом на Google Drive</a>
-    </div>`
-
-    'secret': '<p>Введите пароль:</p><input type="password" id="pass"><button onclick="checkPass()">OK</button>',
-    'trash': '<h3>Мерч (Корзина)</h3><p>Фото твоих футболок тут.</p>'
+    'trash': `<p style="text-align:center;">Тут пока пусто...</p>`
 };
 
+// 3. Функции управления
 function openFolder(id) {
     const win = document.getElementById('window-template');
-    const body = document.getElementById('window-body');
-    const title = document.querySelector('.window-title');
-    
-    body.innerHTML = folderContent[id];
-    title.innerText = id.replace('-', ' ').toUpperCase();
+    document.getElementById('window-body').innerHTML = folderContent[id];
+    document.querySelector('.window-title').innerText = id.toUpperCase();
     win.style.display = 'block';
 }
 
@@ -60,33 +75,17 @@ function closeWindow() {
 }
 
 function checkPass() {
-    const val = document.getElementById('pass').value;
-    if(val === '1234') { // Твой пароль
-        document.getElementById('window-body').innerHTML = '<h4>Секретные фото:</h4><img src="assets/secret.jpg" width="100%">';
+    if(document.getElementById('pass_input').value === '1234') {
+        document.getElementById('lock').style.display = 'none';
+        document.getElementById('secret-files').style.display = 'block';
     } else {
-        alert('Неверный пароль!');
+        alert('Неверно!');
     }
 }
 
-function setWallpaper(imgUrl) {
-    const desktop = document.querySelector('.desktop');
-    desktop.style.backgroundImage = `url(${imgUrl})`;
-    // Добавляем уведомление как в Windows
-    alert("Обои рабочего стола успешно изменены!");
+function playTrack(file, title) {
+    const a = document.getElementById('main-audio');
+    document.getElementById('track-title').innerText = title;
+    a.src = 'assets/' + file;
+    a.play();
 }
-
-function playTrack(fileName, title) {
-    const audio = document.getElementById('main-audio');
-    const titleDisplay = document.getElementById('track-title');
-    
-    audio.src = 'assets/' + fileName;
-    titleDisplay.innerText = title;
-    audio.play();
-    
-    // Подсветка активного трека (опционально)
-    const tracks = document.querySelectorAll('.track-item');
-    tracks.forEach(t => t.style.background = 'white');
-    event.target.style.background = '#316ac5';
-    event.target.style.color = 'white';
-}
-
