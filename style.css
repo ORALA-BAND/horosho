@@ -137,3 +137,34 @@ audio { width: 100%; filter: invert(1) hue-rotate(270deg); height: 35px; margin:
     box-shadow: 0 0 15px #ff00ff;
     object-fit: cover;
 }
+
+/* Сетка в секретной папке */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    gap: 10px;
+    padding: 10px;
+}
+.secret-thumb {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+/* Стили просмотрщика */
+#photo-viewer {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#viewer-img { max-width: 90%; max-height: 80%; border: 3px solid white; }
+.close-viewer { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
+.nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; font-size: 50px; cursor: pointer; padding: 20px; }
+.prev { left: 10px; }
+.next { right: 10px; }
