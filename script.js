@@ -186,3 +186,22 @@ function setAsWallpaper() {
     // Закрываем просмотрщик, чтобы увидеть результат
     closeViewer();
 }
+
+// 1. Открытие BSOD при нажатии на Пуск
+document.querySelector('.start-button').onclick = () => {
+    document.getElementById('bsod').style.display = 'block';
+};
+
+// 2. Функция закрытия
+function closeBsod() {
+    document.getElementById('bsod').style.display = 'none';
+}
+
+// 3. Закрытие любой клавишей (Return to reality)
+window.addEventListener('keydown', () => {
+    const bsod = document.getElementById('bsod');
+    if (bsod && bsod.style.display === 'block') {
+        closeBsod();
+    }
+});
+
