@@ -129,3 +129,19 @@ function updateTime() {
     const now = new Date();
     document.getElementById('clock').innerText = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
 }
+
+function setAsWallpaper() {
+    const currentImgUrl = document.getElementById('viewer-img').src;
+    const desktop = document.querySelector('.desktop');
+    
+    // Меняем фон рабочего стола
+    desktop.style.backgroundImage = `url('${currentImgUrl}')`;
+    desktop.style.backgroundSize = 'cover';
+    desktop.style.backgroundPosition = 'center';
+    
+    // Показываем классическое уведомление Windows
+    alert("Обои рабочего стола изменены!");
+    
+    // Закрываем просмотрщик, чтобы увидеть результат
+    closeViewer();
+}
