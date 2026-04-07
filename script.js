@@ -32,12 +32,34 @@ window.onload = () => {
 
 // Контент папок
 const folderContent = {
-    'my-computer': `
-        <div style="color:black; font-size:14px; padding:10px;">
-            <p>Система: ORALA XP Music Edition</p>
-            <p onclick="window.open('ССЫЛКА_РФ')" style="cursor:pointer; color:blue; text-decoration:underline; margin-top:15px;">> Донат Россия (СБП)</p>
-            <p onclick="window.open('ССЫЛКА_ИНТ')" style="cursor:pointer; color:blue; text-decoration:underline; margin-top:10px;">> PayPal (Global)</p>
+        'my-computer': `
+        <div style="color:black; font-size:13px; padding:10px;">
+            <p><strong>Выберите способ поддержки:</strong></p>
+            
+            <!-- Блок PayPal -->
+            <div style="margin-top:15px; background:#fff; border:1px inset #808080; padding:10px; text-align:center;">
+                <img src="assets/paypal-qr.jpg" width="32" style="vertical-align:middle;">
+                <span style="font-weight:bold; margin-left:10px;">PayPal (International)</span>
+                <br><br>
+                <!-- Твой QR-код -->
+                <img src="assets/paypal-qr.png" style="width:150px; height:150px; border:1px solid #ccc; display:block; margin: 0 auto;">
+                <br>
+                <button onclick="window.open('ТВОЯ_ССЫЛКА_PAYPAL')" style="cursor:pointer; padding:5px 10px; margin-top:5px;">
+                    DONATE
+                </button>
+            </div>
+
+            <!-- Блок СБП (Россия) -->
+            <div style="margin-top:15px; background:#fff; border:1px inset #808080; padding:10px; text-align:center;">
+                <img src="" width="32" style="vertical-align:middle;">
+                <span style="font-weight:bold; margin-left:10px;">Донат (Россия / СБП)</span>
+                <br><br>
+                <button onclick="window.open('ТВОЯ_ССЫЛКА_СБП')" style="cursor:pointer; padding:8px 15px; font-weight:bold; border:2px solid #388038;">
+                    ПОДДЕРЖАТЬ ЧЕРЕЗ СБОР ДЕНЕГ В СБЕР
+                </button>
+            </div>
         </div>`,
+
     
     'secret': `
         <div id="lock" style="text-align:center; color:black; padding:10px;">
