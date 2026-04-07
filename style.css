@@ -9,11 +9,11 @@ body, html { margin: 0; padding: 0; height: 100%; font-family: "Tahoma", sans-se
 }
 
 .boot-logo {
-    width: 120px; /* Отрегулируй размер под свое лого */
+    width: 250px; /* Отрегулируй размер под свое лого */
     height: auto;
     margin-bottom: 20px;
     /* Можно добавить небольшое свечение логотипу */
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
 }
 
 .boot-title {
