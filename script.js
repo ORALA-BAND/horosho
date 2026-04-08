@@ -54,6 +54,8 @@ const folderContent = {
                 <button onclick="window.open('https://messenger.online.sberbank.ru/sl/kTP9APlvDeHVsot93')" style="cursor:pointer; padding:8px 15px; font-weight:bold; border:2px solid #388038;">
                     ПОДДЕРЖАТЬ ЧЕРЕЗ СБОР ДЕНЕГ В СБЕР
                 </button>
+                <br><br>
+                <p style="margin: 0; font-weight: bold;">Или сюда: 5379 6530 1731 2925</p>
             </div>
         </div>`,
 
