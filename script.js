@@ -55,7 +55,7 @@ const folderContent = {
                     ПОДДЕРЖАТЬ ЧЕРЕЗ СБОР ДЕНЕГ В СБЕР
                 </button>
                 <br><br>
-                <p style="margin: 0; font-weight: bold;">Или сюда: +7 906 153 05 61</p>
+                <p style="margin: 0; font-weight: bold;">Или сюда: +7 906 153 05 61 Райффайзен</p>
             </div>
         </div>`,
 
